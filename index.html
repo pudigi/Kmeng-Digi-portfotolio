@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kmeng Digi - Digital Marketing Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-navy: #0a192f;
+            --navy: #112240;
+            --light-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #ccd6f6;
+            --green: #64ffda;
+            --green-tint: rgba(100, 255, 218, 0.1);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Kantumruy Pro', sans-serif;
+            background-color: var(--dark-navy);
+            color: var(--light-slate);
+            /* Subtle grid background for tech feel */
+            background-image: linear-gradient(var(--light-navy) 1px, transparent 1px), linear-gradient(to right, var(--light-navy) 1px, var(--dark-navy) 1px);
+            background-size: 30px 30px;
+        }
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--green);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .nav-link:hover {
+            color: var(--green);
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: var(--green-tint);
+            transform: translateY(-3px);
+            box-shadow: 0 7px 14px rgba(0,0,0,0.2), 0 3px 6px rgba(0,0,0,0.2);
+        }
+        .service-card, .project-card {
+            background-color: var(--navy);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--light-navy);
+        }
+        .service-card:hover, .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+        }
+        .project-card h3 a:hover {
+            color: var(--green);
+        }
+        .timeline-item {
+            border-left: 2px solid var(--green);
+            transition: background-color 0.3s;
+        }
+        .timeline-item:hover {
+            background-color: var(--green-tint);
+        }
+        .section-title {
+            color: var(--green);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 120%;
+            height: 1px;
+            bottom: -10px;
+            left: -10%;
+            background-color: var(--light-navy);
+        }
+        .form-input {
+            background-color: var(--light-navy);
+            border: 1px solid var(--slate);
+            color: var(--light-slate);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px var(--green-tint);
+        }
+        .form-input::placeholder {
+            color: var(--slate);
+        }
+        .lang-toggle {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .lang-toggle.active {
+            color: var(--green);
+            font-weight: bold;
+        }
+        [data-lang="km"] { display: none; }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .dashboard-card {
+            background-color: var(--navy);
+            border: 1px solid var(--light-navy);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .dashboard-card h3 {
+            color: var(--green);
+        }
+        .progress-bar {
+            background-color: var(--light-navy);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-bar-inner {
+            background-color: var(--green);
+            height: 100%;
+            border-radius: 999px;
+            transition: width 1s ease-in-out;
+        }
+        .metric-value {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--green);
+        }
+        .scrolled {
+            background-color: rgba(10, 25, 47, 0.85);
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+            backdrop-filter: blur(10px);
+        }
+        .social-icons a, .project-links a {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-icons a:hover, .project-links a:hover {
+            transform: translateY(-4px);
+            color: var(--green);
+        }
+        .typewriter-cursor {
+            color: var(--green);
+            animation: blink-caret .75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header id="main-header" class="sticky top-0 z-50 px-4 md:px-8 transition-all duration-300">
+        <nav class="container mx-auto flex justify-between items-center py-4">
+            <a href="#" class="text-2xl font-bold text-white">
+                <img src="https://scontent.fpnh11-2.fna.fbcdn.net/v/t39.30808-6/470202033_565048516284776_6912878528941455669_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGFN_xx8hXrvJ3RA3sCZc7OEZtWIbR0ZscRm1YhtHRmx0merPqzEJDCf_yF6wOTeFXKlEWRkv9ggl-TVQzbyuzX&_nc_ohc=z1uQ2f5ZEKAQ7kNvwFpkuQP&_nc_oc=AdmqfGrjvq1htikku2iWxrZn498HFcjH83jru0vXNGH7PfJ1V7QoIFeier8MgQFSd88&_nc_zt=23&_nc_ht=scontent.fpnh11-2.fna&_nc_gid=Xv0-qXFSFyNXPuMIHG5RgQ&oh=00_AfauVS62G_C2BpPEAok0kWyfxZjxOF_EK-c_eivmqEi-WA&oe=68BDD3DD" alt="Kmeng Digi Logo" class="h-12">
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="nav-link text-lg" data-lang-en>Home</a>
+                <a href="#home" class="nav-link text-lg" data-lang-km>ទំព័រដើម</a>
+                <a href="#services" class="nav-link text-lg" data-lang-en>Services</a>
+                <a href="#services" class="nav-link text-lg" data-lang-km>សេវាកម្ម</a>
+                <a href="#projects" class="nav-link text-lg" data-lang-en>Projects</a>
+                <a href="#projects" class="nav-link text-lg" data-lang-km>គម្រោង</a>
+                <a href="#about" class="nav-link text-lg" data-lang-en>About Us</a>
+                <a href="#about" class="nav-link text-lg" data-lang-km>អំពី​ពួក​យើង</a>
+                <a href="#contact" class="nav-link text-lg" data-lang-en>Contact</a>
+                <a href="#contact" class="nav-link text-lg" data-lang-km>ទំនាក់ទំនង</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="lang-toggle-container flex space-x-2 text-lg">
+                    <span id="lang-en" class="lang-toggle active">EN</span>
+                    <span>/</span>
+                    <span id="lang-km" class="lang-toggle">KM</span>
+                </div>
+                <button class="md:hidden" id="mobile-menu-button">
+                    <i class="fas fa-bars text-2xl text-white"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4">
+            <a href="#home" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-en>Home</a>
+            <a href="#home" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-km>ទំព័រដើម</a>
+            <a href="#services" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-en>Services</a>
+            <a href="#services" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-km>សេវាកម្ម</a>
+            <a href="#projects" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-en>Projects</a>
+            <a href="#projects" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-km>គម្រោង</a>
+            <a href="#about" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-en>About Us</a>
+            <a href="#about" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-km>អំពី​ពួក​យើង</a>
+            <a href="#contact" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-en>Contact</a>
+            <a href="#contact" class="block py-2 px-4 text-lg hover:bg-[#112240] rounded" data-lang-km>ទំនាក់ទំនង</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-8">
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center py-20">
+            <div class="w-full">
+                <div class="text-center md:text-left">
+                    <h1 id="hero-headline" class="text-4xl md:text-6xl font-bold leading-tight h-24 md:h-32">
+                        <span class="typewriter-target"></span><span class="typewriter-cursor">|</span>
+                    </h1>
+                    <p class="mt-4 text-lg md:text-xl text-[#8892b0] max-w-2xl mx-auto md:mx-0" data-aos="fade-up" data-aos-delay="200">
+                        <span data-lang-en>We deliver data-driven digital advertising solutions that connect you with your audience and drive real growth.</span>
+                        <span data-lang-km>យើងផ្តល់ដំណោះស្រាយផ្សាយពាណិជ្ជកម្មឌីជីថលដែលផ្អែកលើទិន្នន័យ ដែលភ្ជាប់អ្នកជាមួយអតិថិជន និងជំរុញកំណើនពិតប្រាកដ។</span>
+                    </p>
+                    <a href="#services" class="cta-button inline-block mt-8 px-8 py-3 border-2 border-[#64ffda] text-[#64ffda] font-semibold rounded-lg text-lg" data-aos="fade-up" data-aos-delay="300">
+                        <span data-lang-en>See Our Results</span>
+                        <span data-lang-km>មើលលទ្ធផលរបស់យើង</span>
+                    </a>
+                </div>
+
+                <!-- Mockup Dashboards -->
+                <div class="mt-16 dashboard-grid">
+                    <!-- Facebook Ads Card -->
+                    <div class="dashboard-card" data-aos="fade-up" data-aos-delay="400">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold" data-lang-en>Facebook Ads Performance</h3>
+                                <h3 class="text-xl font-bold" data-lang-km>លទ្ធផលផ្សាយពាណិជ្ជកម្ម Facebook</h3>
+                                <i class="fab fa-facebook text-3xl text-blue-500"></i>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-[#8892b0]" data-lang-en>Reach Increase</p>
+                                <p class="text-sm text-[#8892b0]" data-lang-km>ការកើនឡើងនៃ Reach</p>
+                                <div class="progress-bar mt-1 h-3">
+                                    <div class="progress-bar-inner" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-[#8892b0]" data-lang-en>Conversion Rate</p>
+                                <p class="text-sm text-[#8892b0]" data-lang-km>អត្រា​បំប្លែង</p>
+                                <div class="progress-bar mt-1 h-3">
+                                    <div class="progress-bar-inner" style="width: 72%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <p class="text-lg text-[#8892b0]" data-lang-en>Avg. ROI for Clients</p>
+                            <p class="text-lg text-[#8892b0]" data-lang-km>ROI ជាមធ្យមសម្រាប់អតិថិជន</p>
+                            <p class="metric-value">250%</p>
+                        </div>
+                    </div>
+
+                    <!-- TikTok Ads Card -->
+                    <div class="dashboard-card" data-aos="fade-up" data-aos-delay="500">
+                        <div>
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="text-xl font-bold" data-lang-en>TikTok Ads Performance</h3>
+                                <h3 class="text-xl font-bold" data-lang-km>លទ្ធផលផ្សាយពាណិជ្ជកម្ម TikTok</h3>
+                                <i class="fab fa-tiktok text-3xl text-white"></i>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-[#8892b0]" data-lang-en>Engagement Rate</p>
+                                <p class="text-sm text-[#8892b0]" data-lang-km>អត្រា​ចូលរួម</p>
+                                <div class="progress-bar mt-1 h-3">
+                                    <div class="progress-bar-inner" style="width: 92%;"></div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-sm text-[#8892b0]" data-lang-en>Viral Potential</p>
+                                <p class="text-sm text-[#8892b0]" data-lang-km>សក្ដានុពល Viral</p>
+                                <div class="progress-bar mt-1 h-3">
+                                    <div class="progress-bar-inner" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="text-center mt-4">
+                            <p class="text-lg text-[#8892b0]" data-lang-en>Campaigns Managed</p>
+                            <p class="text-lg text-[#8892b0]" data-lang-km>យុទ្ធនាការដែលបានគ្រប់គ្រង</p>
+                            <p class="metric-value">150+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-down">
+                <span class="section-title" data-lang-en>Our Services</span>
+                <span class="section-title" data-lang-km>សេវាកម្មរបស់យើង</span>
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Facebook Ads -->
+                <div class="service-card rounded-lg p-8" data-aos="fade-right">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-facebook-square text-4xl text-blue-500 mr-4"></i>
+                        <h3 class="text-2xl font-bold" data-lang-en>Facebook Ads</h3>
+                        <h3 class="text-2xl font-bold" data-lang-km>ផ្សាយពាណិជ្ជកម្ម Facebook</h3>
+                    </div>
+                    <p class="text-3xl font-bold text-[#64ffda] mb-4">$55<span class="text-lg text-[#8892b0]" data-lang-en>/month</span><span class="text-lg text-[#8892b0]" data-lang-km>/ខែ</span></p>
+                    <div class="service-details">
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-en>Benefits:</h4>
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-km>អត្ថប្រយោជន៍៖</h4>
+                        <ul class="list-disc list-inside text-[#8892b0] space-y-2 mb-4">
+                            <li data-lang-en>Increased brand awareness</li><li data-lang-km>ការយល់ដឹងអំពីម៉ាកយីហោកាន់តែច្រើន</li>
+                            <li data-lang-en>Targeted customer reach</li><li data-lang-km>ឈានដល់អតិថិជនគោលដៅ</li>
+                            <li data-lang-en>Higher conversion rates & improved ROI</li><li data-lang-km>អត្រា​បំប្លែង​ខ្ពស់ និង ROI ប្រសើរឡើង</li>
+                        </ul>
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-en>What's Included:</h4>
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-km>អ្វី​ខ្លះ​រួម​បញ្ចូល​ទាំង​:</h4>
+                        <ul class="list-disc list-inside text-[#8892b0] space-y-2">
+                            <li data-lang-en>Campaign setup & daily monitoring</li><li data-lang-km>ការរៀបចំយុទ្ធនាការ និងការត្រួតពិនិត្យប្រចាំថ្ងៃ</li>
+                            <li data-lang-en>Audience research & ad copy creation</li><li data-lang-km>ការស្រាវជ្រាវទស្សនិកជន និងការបង្កើតច្បាប់ចម្លងពាណិជ្ជកម្ម</li>
+                            <li data-lang-en>A/B testing and performance optimization</li><li data-lang-km>ការធ្វើតេស្ត A/B និងការបង្កើនប្រសិទ្ធភាព</li>
+                            <li data-lang-en>Weekly reporting</li><li data-lang-km>របាយការណ៍ប្រចាំសប្តាហ៍</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- TikTok Ads -->
+                <div class="service-card rounded-lg p-8" data-aos="fade-left">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-tiktok text-4xl text-white mr-4"></i>
+                        <h3 class="text-2xl font-bold" data-lang-en>TikTok Ads</h3>
+                        <h3 class="text-2xl font-bold" data-lang-km>ផ្សាយពាណិជ្ជកម្ម TikTok</h3>
+                    </div>
+                    <p class="text-3xl font-bold text-[#64ffda] mb-4">$55<span class="text-lg text-[#8892b0]" data-lang-en>/month</span><span class="text-lg text-[#8892b0]" data-lang-km>/ខែ</span></p>
+                     <div class="service-details">
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-en>Benefits:</h4>
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-km>អត្ថប្រយោជន៍៖</h4>
+                        <ul class="list-disc list-inside text-[#8892b0] space-y-2 mb-4">
+                           <li data-lang-en>Reach a younger demographic</li><li data-lang-km>ឈានដល់ប្រជាសាស្រ្តវ័យក្មេង</li>
+                           <li data-lang-en>High potential for viral content</li><li data-lang-km>សក្តានុពលខ្ពស់សម្រាប់មាតិកា Viral</li>
+                           <li data-lang-en>Creative short-form video engagement</li><li data-lang-km>ការចូលរួមវីដេអូទម្រង់ខ្លីប្រកបដោយការច្នៃប្រឌិត</li>
+                        </ul>
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-en>What's Included:</h4>
+                        <h4 class="font-bold text-lg mb-2 text-white" data-lang-km>អ្វី​ខ្លះ​រួម​បញ្ចូល​ទាំង​:</h4>
+                        <ul class="list-disc list-inside text-[#8892b0] space-y-2">
+                            <li data-lang-en>Campaign setup & daily monitoring</li><li data-lang-km>ការរៀបចំយុទ្ធនាការ និងការត្រួតពិនិត្យប្រចាំថ្ងៃ</li>
+                            <li data-lang-en>Trending sound & effect usage</li><li data-lang-km>ការប្រើប្រាស់សំឡេង និងបែបផែនដែលកំពុងពេញនិយម</li>
+                            <li data-lang-en>Vertical video optimization</li><li data-lang-km>ការបង្កើនប្រសិទ្ធភាពវីដេអូបញ្ឈរ</li>
+                            <li data-lang-en>Weekly performance reports</li><li data-lang-km>របាយការណ៍ការអនុវត្តប្រចាំសប្តាហ៍</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-down">
+                <span class="section-title" data-lang-en>Our Projects</span>
+                <span class="section-title" data-lang-km>គម្រោងរបស់យើង</span>
+            </h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Training -->
+                <div class="project-card rounded-lg flex flex-col overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <a href="#" class="block relative group">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiI8Fz01PaupiLmPbrPtgVQLxCE_N1uEibXPOugGyOe4GEr3WPoNg-yfjE-1E82h8h-SWjJfR3JJygKi-kvo-3mW70GHICjF5SI4s8eQ25UBOsfqaufA6SLgBO4Xxq4j3SBhFziJvwL8u1Tl8iNHaiaMlo4WLKW4mf4epey9TKihBdycKhiqXdo25Clj_E/s1280/Untitled%20design.png" alt="Facebook Marketing Training Session" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="fas fa-external-link-alt text-white text-3xl"></i>
+                        </div>
+                    </a>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-white"><a href="#" data-lang-en>Facebook Marketing Training</a><a href="#" data-lang-km>បណ្តុះបណ្តាលទីផ្សារ Facebook</a></h3>
+                        <p class="text-[#8892b0] text-sm flex-grow" data-lang-en>Conducted a hands-on Facebook Marketing training session for local businesses, empowering them to manage their own campaigns effectively.</p>
+                        <p class="text-[#8892b0] text-sm flex-grow" data-lang-km>បានធ្វើវគ្គបណ្តុះបណ្តាលទីផ្សារ Facebook សម្រាប់អាជីវកម្មក្នុងស្រុក ដោយផ្តល់អំណាចឱ្យពួកគេគ្រប់គ្រងយុទ្ធនាការរបស់ពួកគេប្រកបដោយប្រសិទ្ធភាព។</p>
+                        <ul class="flex flex-wrap text-xs font-mono text-[#8892b0] gap-x-4 gap-y-2 mt-4">
+                            <li>Training</li>
+                            <li>Facebook Ads</li>
+                            <li>Workshop</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Project 2: E-commerce -->
+                <div class="project-card rounded-lg flex flex-col overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#" class="block relative group">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8iEuch1FRwGSCx4D8qZVMbs3c-2DEGanMLUG0kkZ1zeF60BOuMTtoHwMYrgpBsO8XnfLTkPrB6x1EdRxSp77GExqHs4afUud98DjQ88o2FPYuxZsZnzfWe9-GW6G7n67av6pw0FgdkPY8KaS3nMHUB9aIsPESZojb2r7P6yEm3rEUm_5SA1pcSle0w-I/s2048/Untitled%20design%20%281%29.png" alt="Client Ad Campaign Results" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="fas fa-external-link-alt text-white text-3xl"></i>
+                        </div>
+                    </a>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-white"><a href="#" data-lang-en>Client Ad Campaign Results</a><a href="#" data-lang-km>លទ្ធផលយុទ្ធនាការផ្សាយពាណិជ្ជកម្ម</a></h3>
+                        <p class="text-[#8892b0] text-sm flex-grow" data-lang-en>Successfully managed and optimized ad campaigns for clients, delivering measurable results and significant return on investment (ROI).</p>
+                        <p class="text-[#8892b0] text-sm flex-grow" data-lang-km>គ្រប់គ្រង និងបង្កើនប្រសិទ្ធភាពយុទ្ធនាការផ្សាយពាណិជ្ជកម្មសម្រាប់អតិថិជនដោយជោគជ័យ ផ្តល់លទ្ធផលដែលអាចវាស់វែងបាន និងទទួលបានផលចំណេញខ្ពស់ (ROI)។</p>
+                        <ul class="flex flex-wrap text-xs font-mono text-[#8892b0] gap-x-4 gap-y-2 mt-4">
+                            <li>Facebook Ads</li>
+                            <li>Data Analysis</li>
+                            <li>ROI Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                 <!-- Project 3: Restaurant -->
+                <div class="project-card rounded-lg flex flex-col overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                     <a href="#" class="block relative group">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhW7-X0BSSWENZ3C6UAUpPPb4CCpO2eYUJvk9TmfuE1mmrAG8T69-c7pECrPz1JsyavqL75Ra8AK-eAn6-ZNQOa8qVr6jdN80bM83UrZ_XOUuzjRltubDjgIynm9Jy3IxueyqVNRFa-IyMMQyUCibfnIMJ1tpAuyvGJYc9QRkQ-BoQ_Dhk01buocwvaLZE/s1280/photo_2025-09-03%2015.22.40.jpeg" alt="Graphic Design Work" class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105">
+                         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <i class="fas fa-external-link-alt text-white text-3xl"></i>
+                        </div>
+                    </a>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold mb-2 text-white"><a href="#" data-lang-en>Graphic Design for Campaigns</a><a href="#" data-lang-km>ការរចនាក្រាហ្វិកសម្រាប់យុទ្ធនាការ</a></h3>
+                        <p class="text-[#8892b0] text-sm flex-grow" data-lang-en>Developed engaging visual content and graphics for various marketing campaigns at You Can Win Group, enhancing brand messaging.</p>
+                        <p class="text-[#8892b0] text-sm flex-grow" data-lang-km>បានបង្កើតមាតិកាដែលមើលឃើញ និងក្រាហ្វិកសម្រាប់យុទ្ធនាការទីផ្សារផ្សេងៗនៅ You Can Win Group ដោយបង្កើនការផ្ញើសារម៉ាក។</p>
+                        <ul class="flex flex-wrap text-xs font-mono text-[#8892b0] gap-x-4 gap-y-2 mt-4">
+                            <li>Visual Content</li>
+                            <li>Graphic Design</li>
+                            <li>Branding</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-down">
+                <span class="section-title" data-lang-en>About Us</span>
+                <span class="section-title" data-lang-km>អំពី​ពួក​យើង</span>
+            </h2>
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                <!-- Team Card -->
+                <div class="w-full md:w-1/3 text-center" data-aos="zoom-in">
+                    <div class="bg-[#112240] p-6 rounded-lg border border-[#233554]">
+                        <img src="https://scontent.fpnh11-1.fna.fbcdn.net/v/t39.30808-6/482354728_622855840504043_5526122515290874269_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHLjd2QLjn8dx20Lsuvf3hZKyYZ2bjC608rJhnZuMLrTzY4ZCD_UIqO8dN3Psl9YhzZiuHF9VU0nRgFUm3Q81jQ&_nc_ohc=H-f3fNLz6LsQ7kNvwHSAuQH&_nc_oc=AdmgMM0E70QeZPku1El9YjDv062DFcE99AI8Ia1TPnGyEHbX03y4WNDIkVCsX2TgLWI&_nc_zt=23&_nc_ht=scontent.fpnh11-1.fna&_nc_gid=xQN1A-IBO4eCpQGSipMzsw&oh=00_Afb9YfX2NxBLG9r3_muDHe1SA-G4-CWv1oitwGJ6A2TiHA&oe=68BDC459" alt="Chhong Khen" class="w-32 h-32 rounded-full mx-auto mb-4 border-2 border-[#64ffda] object-cover">
+                        <h3 class="text-xl font-bold text-white">Chhong Khen</h3>
+                        <p class="text-[#64ffda]" data-lang-en>Founder of Kmeng Digi</p>
+                        <p class="text-[#64ffda]" data-lang-km>ស្ថាបនិក Kmeng Digi</p>
+                        <p class="text-[#8892b0] mt-4 text-sm" data-lang-en>
+                            "My mission is to empower local businesses in Cambodia by leveraging the power of digital advertising. I believe in creating impactful campaigns that drive real results and sustainable growth for our clients."
+                        </p>
+                        <p class="text-[#8892b0] mt-4 text-sm" data-lang-km>
+                            "បេសកកម្មរបស់ខ្ញុំគឺដើម្បីផ្តល់សិទ្ធិអំណាចដល់អាជីវកម្មក្នុងស្រុកក្នុងប្រទេសកម្ពុជាដោយប្រើប្រាស់ថាមពលនៃការផ្សាយពាណិជ្ជកម្មឌីជីថល។ ខ្ញុំជឿជាក់លើការបង្កើតយុទ្ធនាការដែលមានឥទ្ធិពលដែលជំរុញឱ្យមានលទ្ធផលពិតប្រាកដ និងកំណើនប្រកបដោយនិរន្តរភាពសម្រាប់អតិថិជនរបស់យើង។"
+                        </p>
+                    </div>
+                     <div class="bg-[#112240] p-6 rounded-lg border border-[#233554] mt-6 text-left">
+                        <h4 class="font-bold text-lg text-[#64ffda] mb-2" data-lang-en>Vision</h4>
+                        <h4 class="font-bold text-lg text-[#64ffda] mb-2" data-lang-km>ចក្ខុវិស័យ</h4>
+                        <p class="text-[#8892b0] text-sm" data-lang-en>"To be the leading digital marketing partner for small and medium-sized businesses in Cambodia."</p>
+                        <p class="text-[#8892b0] text-sm" data-lang-km>"ដើម្បីក្លាយជាដៃគូទីផ្សារឌីជីថលឈានមុខគេសម្រាប់អាជីវកម្មខ្នាតតូច និងមធ្យមក្នុងប្រទេសកម្ពុជា។"</p>
+                        <h4 class="font-bold text-lg text-[#64ffda] mt-4 mb-2" data-lang-en>Mission</h4>
+                        <h4 class="font-bold text-lg text-[#64ffda] mt-4 mb-2" data-lang-km>បេសកកម្ម</h4>
+                        <p class="text-[#8892b0] text-sm" data-lang-en>"To provide tailored, data-driven digital advertising solutions that help our clients achieve significant business growth."</p>
+                        <p class="text-[#8892b0] text-sm" data-lang-km>"ដើម្បីផ្តល់នូវដំណោះស្រាយការផ្សាយពាណិជ្ជកម្មឌីជីថលដែលផ្អែកលើទិន្នន័យ ដែលជួយអតិថិជនរបស់យើងសម្រេចបាននូវកំណើនអាជីវកម្មដ៏សំខាន់។"</p>
+                    </div>
+                </div>
+
+                <!-- Experience Timeline -->
+                <div class="w-full md:w-2/3 mt-8 md:mt-0" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6 text-white" data-lang-en>Learning & Experience</h3>
+                    <h3 class="text-2xl font-bold mb-6 text-white" data-lang-km>ការរៀន និងបទពិសោធន៍</h3>
+                    <div class="relative space-y-8">
+                        <div class="timeline-item pl-8 py-2">
+                            <div class="absolute -left-1.5 w-3 h-3 bg-[#64ffda] rounded-full mt-1.5"></div>
+                            <p class="font-semibold text-[#64ffda]">Present</p>
+                            <h4 class="font-bold text-lg text-white" data-lang-en>Freelancer & Small Business Owner</h4>
+                            <h4 class="font-bold text-lg text-white" data-lang-km>អ្នកឯករាជ្យ និងម្ចាស់អាជីវកម្មខ្នាតតូច</h4>
+                            <p class="text-sm text-[#8892b0]">Kmeng Digi</p>
+                        </div>
+                        <div class="timeline-item pl-8 py-2">
+                            <div class="absolute -left-1.5 w-3 h-3 bg-[#64ffda] rounded-full mt-1.5"></div>
+                            <p class="font-semibold text-[#64ffda]">2023 - 2024</p>
+                            <h4 class="font-bold text-lg text-white" data-lang-en>Sales Consultant</h4>
+                            <h4 class="font-bold text-lg text-white" data-lang-km>ទីប្រឹក្សាផ្នែកលក់</h4>
+                            <p class="text-sm text-[#8892b0]">MakongNet Wifi</p>
+                        </div>
+                         <div class="timeline-item pl-8 py-2">
+                            <div class="absolute -left-1.5 w-3 h-3 bg-[#64ffda] rounded-full mt-1.5"></div>
+                            <p class="font-semibold text-[#64ffda]">2022 - 2023</p>
+                            <h4 class="font-bold text-lg text-white" data-lang-en>Designer</h4>
+                            <h4 class="font-bold text-lg text-white" data-lang-km>អ្នករចនា</h4>
+                            <p class="text-sm text-[#8892b0]">You Can Win Group</p>
+                        </div>
+                         <div class="timeline-item pl-8 py-2">
+                            <div class="absolute -left-1.5 w-3 h-3 bg-[#64ffda] rounded-full mt-1.5"></div>
+                            <p class="font-semibold text-[#64ffda]">2021 - 2022</p>
+                            <h4 class="font-bold text-lg text-white" data-lang-en>Facebook Marketing Trainer</h4>
+                            <h4 class="font-bold text-lg text-white" data-lang-km>គ្រូបង្គោលទីផ្សារ Facebook</h4>
+                            <p class="text-sm text-[#8892b0]">Company Name</p>
+                        </div>
+                        <div class="timeline-item pl-8 py-2">
+                            <div class="absolute -left-1.5 w-3 h-3 bg-[#64ffda] rounded-full mt-1.5"></div>
+                            <p class="font-semibold text-[#64ffda]">2019 - 2024</p>
+                            <h4 class="font-bold text-lg text-white" data-lang-en>Student - Business Manager Specialization</h4>
+                            <h4 class="font-bold text-lg text-white" data-lang-km>និស្សិត - ឯកទេសគ្រប់គ្រងពាណិជ្ជកម្ម</h4>
+                            <p class="text-sm text-[#8892b0]">National Institute of Business (NIB)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="py-20 text-center">
+            <h2 class="text-3xl font-bold" data-aos="fade-down">
+                <span class="section-title" data-lang-en>Get In Touch</span>
+                <span class="section-title" data-lang-km>សូម​ទំនាក់ទំនង</span>
+            </h2>
+            <p class="text-lg text-[#8892b0] mt-4 max-w-xl mx-auto" data-aos="fade-up">
+                <span data-lang-en>Have a project in mind or just want to say hello? My inbox is always open.</span>
+                <span data-lang-km>មានគម្រោងក្នុងចិត្ត ឬគ្រាន់តែចង់និយាយសួស្តី? ប្រអប់សំបុត្ររបស់ខ្ញុំបើកជានិច្ច។</span>
+            </p>
+            <div class="mt-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+                <form action="#" method="POST" class="space-y-6 text-left">
+                    <div>
+                        <label for="name" class="hidden" data-lang-en>Name</label>
+                        <label for="name" class="hidden" data-lang-km>ឈ្មោះ</label>
+                        <input type="text" id="name" name="name" placeholder="Name / ឈ្មោះ" class="form-input w-full p-3 rounded-md">
+                    </div>
+                    <div>
+                        <label for="email" class="hidden" data-lang-en>Email</label>
+                        <label for="email" class="hidden" data-lang-km>អ៊ីមែល</label>
+                        <input type="email" id="email" name="email" placeholder="Email / អ៊ីមែល" class="form-input w-full p-3 rounded-md">
+                    </div>
+                    <div>
+                        <label for="phone" class="hidden" data-lang-en>Phone</label>
+                        <label for="phone" class="hidden" data-lang-km>ទូរស័ព្ទ</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number / លេខទូរស័ព្ទ" class="form-input w-full p-3 rounded-md">
+                    </div>
+                    <div>
+                        <label for="message" class="hidden" data-lang-en>Message</label>
+                        <label for="message" class="hidden" data-lang-km>សារ</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Message / សារ" class="form-input w-full p-3 rounded-md"></textarea>
+                    </div>
+                    <div class="text-center">
+                         <button type="submit" class="cta-button inline-block px-8 py-3 border-2 border-[#64ffda] text-[#64ffda] font-semibold rounded-lg text-lg">
+                            <span data-lang-en>Send Message</span>
+                            <span data-lang-km>ផ្ញើសារ</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-12 text-[#8892b0]">
+                    <p class="text-lg" data-lang-en>Or contact us directly:</p>
+                    <p class="text-lg" data-lang-km>หรือติดต่อเราโดยตรง៖</p>
+                    <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 mt-4">
+                        <a href="mailto:pudigital25@gmail.com" class="hover:text-[#64ffda] transition-colors"><i class="fas fa-envelope mr-2"></i> pudigital25@gmail.com</a>
+                        <a href="tel:011840824" class="hover:text-[#64ffda] transition-colors"><i class="fas fa-phone mr-2"></i> 011 840 824</a>
+                    </div>
+                    <div class="flex justify-center items-center gap-6 mt-6 text-2xl social-icons">
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://t.me/chhongjr21ceo28" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 border-t border-[#233554] mt-12">
+        <p class="text-[#8892b0]">&copy; 2024 Kmeng Digi. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS (Animate on Scroll)
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 50,
+            });
+
+            // Header Scroll Effect
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Language Toggle & Typewriter
+            const langEnToggle = document.getElementById('lang-en');
+            const langKmToggle = document.getElementById('lang-km');
+            const langEnElements = document.querySelectorAll('[data-lang-en]');
+            const langKmElements = document.querySelectorAll('[data-lang-km]');
+            const typewriterTarget = document.querySelector('.typewriter-target');
+            
+            const textEn = "Boost Your Business Today!";
+            const textKm = "ជំរុញអាជីវកម្មរបស់អ្នកថ្ងៃនេះ!";
+            let typingInterval;
+
+            function typeWriter(text) {
+                let i = 0;
+                typewriterTarget.textContent = "";
+                clearInterval(typingInterval);
+                typingInterval = setInterval(() => {
+                    if (i < text.length) {
+                        typewriterTarget.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typingInterval);
+                    }
+                }, 80);
+            }
+
+            function setLanguage(lang) {
+                if (lang === 'km') {
+                    langEnToggle.classList.remove('active');
+                    langKmToggle.classList.add('active');
+                    langEnElements.forEach(el => el.style.display = 'none');
+                    langKmElements.forEach(el => el.style.display = 'inline');
+                    typeWriter(textKm);
+                } else {
+                    langKmToggle.classList.remove('active');
+                    langEnToggle.classList.add('active');
+                    langKmElements.forEach(el => el.style.display = 'none');
+                    langEnElements.forEach(el => el.style.display = 'inline');
+                    typeWriter(textEn);
+                }
+                 
+                document.querySelectorAll('h1, h2, h3, h4, p, li, a, span').forEach(el => {
+                    if(el.hasAttribute('data-lang-en') || el.hasAttribute('data-lang-km')){
+                         if(el.closest('#hero-headline')) return; // Skip typewriter elements
+
+                         if (lang === 'km') {
+                            if(el.matches('[data-lang-km]')) el.style.display = el.tagName === 'LI' ? 'list-item' : 'block';
+                            if(el.matches('[data-lang-en]')) el.style.display = 'none';
+                         } else {
+                            if(el.matches('[data-lang-en]')) el.style.display = el.tagName === 'LI' ? 'list-item' : 'block';
+                            if(el.matches('[data-lang-km]')) el.style.display = 'none';
+                         }
+                    }
+                });
+            }
+
+            langEnToggle.addEventListener('click', () => setLanguage('en'));
+            langKmToggle.addEventListener('click', () => setLanguage('km'));
+
+            // Set initial language and start typewriter
+            setLanguage('en');
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
