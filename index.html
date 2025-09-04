@@ -328,6 +328,23 @@
         #chatbot-send-button:hover {
             background-color: rgba(100, 255, 218, 0.8);
         }
+        .telegram-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--green);
+            color: var(--green);
+            font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 1rem;
+        }
+
+        .telegram-button:hover {
+            background-color: var(--green-tint);
+        }
 
     </style>
 </head>
@@ -387,57 +404,80 @@
                     </a>
                 </div>
 
-                <!-- Mockup Dashboards -->
-                <div class="mt-16 dashboard-grid">
-                    <!-- Facebook Ads Card -->
-                    <div class="dashboard-card" data-aos="fade-up" data-aos-delay="400">
-                        <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-xl font-bold"><span data-lang-en>Facebook Ads Performance</span><span data-lang-km>លទ្ធផលផ្សាយពាណិជ្ជកម្ម Facebook</span></h3>
-                                <i class="fab fa-facebook text-3xl text-blue-500"></i>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-sm text-[#8892b0]"><span data-lang-en>Reach Increase</span><span data-lang-km>ការកើនឡើងនៃ Reach</span></p>
-                                <div class="progress-bar mt-1 h-3">
-                                    <div class="progress-bar-inner" style="width: 85%;"></div>
-                                </div>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-sm text-[#8892b0]"><span data-lang-en>Conversion Rate</span><span data-lang-km>អត្រា​បំប្លែង</span></p>
-                                <div class="progress-bar mt-1 h-3">
-                                    <div class="progress-bar-inner" style="width: 72%;"></div>
-                                </div>
-                            </div>
+                <!-- New Ad Banner Section -->
+                <div class="relative w-full rounded-lg overflow-hidden mt-20 p-8 text-center" style="background: linear-gradient(135deg, var(--navy), var(--dark-navy));" data-aos="zoom-in">
+                    <div class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://placehold.co/1200x400/112240/64ffda?text=Digital+Marketing+Ad'); background-size: cover; background-position: center;"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row items-center justify-between">
+                        <div class="md:w-3/4">
+                            <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
+                                <span data-lang-en>Unlock Your Business Potential with Us!</span>
+                                <span data-lang-km>ដោះសោសក្តានុពលអាជីវកម្មរបស់អ្នកជាមួយពួកយើង!</span>
+                            </h2>
+                            <p class="text-lg md:text-xl text-slate-300">
+                                <span data-lang-en>Get a free consultation on how we can boost your online presence and sales.</span>
+                                <span data-lang-km>ទទួលបានការប្រឹក្សាដោយឥតគិតថ្លៃអំពីរបៀបដែលយើងអាចជំរុញវត្តមាន និងការលក់តាមអ៊ីនធឺណិតរបស់អ្នក។</span>
+                            </p>
                         </div>
-                        <div class="text-center mt-4">
-                            <p class="text-lg text-[#8892b0]"><span data-lang-en>Avg. ROI for Clients</span><span data-lang-km>ROI ជាមធ្យមសម្រាប់អតិថិជន</span></p>
-                            <p class="metric-value">250%</p>
-                        </div>
+                        <a href="#contact" class="mt-6 md:mt-0 flex-shrink-0 cta-button px-8 py-3 border-2 border-white text-white font-semibold rounded-lg text-lg hover:border-green-400 hover:text-green-400">
+                            <span data-lang-en>Request a Call</span>
+                            <span data-lang-km>ស្នើសុំការហៅទូរសព្ទ</span>
+                        </a>
                     </div>
+                </div>
 
-                    <!-- TikTok Ads Card -->
-                    <div class="dashboard-card" data-aos="fade-up" data-aos-delay="500">
+                <!-- Combined Dashboard Card -->
+                <div class="mt-16 dashboard-card rounded-lg p-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex flex-col items-center mb-8">
+                        <h3 class="text-xl font-bold mb-2 text-center">
+                            <span data-lang-en>Combined Ads Performance Dashboard</span>
+                            <span data-lang-km>ផ្ទាំងគ្រប់គ្រងលទ្ធផលផ្សាយពាណិជ្ជកម្មរួម</span>
+                        </h3>
+                        <p class="text-sm text-[#8892b0] text-center"><span data-lang-en>A snapshot of our multi-platform success.</span><span data-lang-km>ទិដ្ឋភាពទូទៅនៃភាពជោគជ័យលើវេទិការបស់យើង។</span></p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center md:text-left">
+                        <!-- Facebook Metrics -->
                         <div>
-                            <div class="flex justify-between items-center mb-4">
-                                <h3 class="text-xl font-bold"><span data-lang-en>TikTok Ads Performance</span><span data-lang-km>លទ្ធផលផ្សាយពាណិជ្ជកម្ម TikTok</span></h3>
-                                <i class="fab fa-tiktok text-3xl text-white"></i>
+                            <div class="flex items-center justify-center md:justify-start mb-4">
+                                <i class="fab fa-facebook-square text-3xl text-blue-500 mr-3"></i>
+                                <h4 class="text-lg font-bold text-white"><span data-lang-en>Facebook Ads</span><span data-lang-km>ផ្សាយពាណិជ្ជកម្ម Facebook</span></h4>
                             </div>
-                            <div class="mb-4">
-                                <p class="text-sm text-[#8892b0]"><span data-lang-en>Engagement Rate</span><span data-lang-km>អត្រា​ចូលរួម</span></p>
-                                <div class="progress-bar mt-1 h-3">
-                                    <div class="progress-bar-inner" style="width: 92%;"></div>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm text-[#8892b0]"><span data-lang-en>Reach Increase</span><span data-lang-km>ការកើនឡើងនៃ Reach</span></p>
+                                    <div class="progress-bar mt-1 h-3">
+                                        <div class="progress-bar-inner" style="width: 85%;"></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mb-4">
-                                <p class="text-sm text-[#8892b0]"><span data-lang-en>Viral Potential</span><span data-lang-km>សក្ដានុពល Viral</span></p>
-                                <div class="progress-bar mt-1 h-3">
-                                    <div class="progress-bar-inner" style="width: 78%;"></div>
+                                <div>
+                                    <p class="text-sm text-[#8892b0]"><span data-lang-en>Conversion Rate</span><span data-lang-km>អត្រា​បំប្លែង</span></p>
+                                    <div class="progress-bar mt-1 h-3">
+                                        <div class="progress-bar-inner" style="width: 72%;"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                         <div class="text-center mt-4">
-                            <p class="text-lg text-[#8892b0]"><span data-lang-en>Campaigns Managed</span><span data-lang-km>យុទ្ធនាការដែលបានគ្រប់គ្រង</span></p>
-                            <p class="metric-value">150+</p>
+
+                        <!-- TikTok Metrics -->
+                        <div>
+                            <div class="flex items-center justify-center md:justify-start mb-4">
+                                <i class="fab fa-tiktok text-3xl text-white mr-3"></i>
+                                <h4 class="text-lg font-bold text-white"><span data-lang-en>TikTok Ads</span><span data-lang-km>ផ្សាយពាណិជ្ជកម្ម TikTok</span></h4>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm text-[#8892b0]"><span data-lang-en>Engagement Rate</span><span data-lang-km>អត្រា​ចូលរួម</span></p>
+                                    <div class="progress-bar mt-1 h-3">
+                                        <div class="progress-bar-inner" style="width: 92%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-[#8892b0]"><span data-lang-en>Viral Potential</span><span data-lang-km>សក្ដានុពល Viral</span></p>
+                                    <div class="progress-bar mt-1 h-3">
+                                        <div class="progress-bar-inner" style="width: 78%;"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -478,6 +518,11 @@
                             <li data-lang-en class="list-item">Weekly reporting</li>
                             <li data-lang-km class="list-item">របាយការណ៍ការអនុវត្តប្រចាំសប្តាហ៍</li>
                         </ul>
+                        <a href="https://t.me/chhongjr21ceo28" target="_blank" rel="noopener noreferrer" class="telegram-button">
+                            <i class="fab fa-telegram-plane mr-2"></i>
+                            <span data-lang-en>Chat on Telegram</span>
+                            <span data-lang-km>ជជែកតាម Telegram</span>
+                        </a>
                     </div>
                 </div>
                 <!-- TikTok Ads -->
@@ -508,6 +553,11 @@
                             <li data-lang-en class="list-item">Weekly performance reports</li>
                             <li data-lang-km class="list-item">របាយការណ៍ការអនុវត្តប្រចាំសប្តាហ៍</li>
                         </ul>
+                        <a href="https://t.me/chhongjr21ceo28" target="_blank" rel="noopener noreferrer" class="telegram-button">
+                             <i class="fab fa-telegram-plane mr-2"></i>
+                            <span data-lang-en>Chat on Telegram</span>
+                            <span data-lang-km>ជជែកតាម Telegram</span>
+                        </a>
                     </div>
                 </div>
             </div>
